@@ -1,0 +1,68 @@
+**Project Title:** Smart Corporate Assistant for Performance Reports
+
+**Objective:** To design and build a practical implementation of a "Smart Corporate Assistant" that helps an employee, Sarah, write her quarterly performance report. This system will demonstrate a context engineering pipeline with four pillars: WRITE, SELECT, COMPRESS, and ISOLATE.
+
+**User Persona:** Sarah, a Senior Product Manager who prefers a professional but concise tone.
+
+**User Story:** As Sarah, I want to get help writing my Q3 performance report so that I can create a nuanced, data-backed report efficiently.
+
+**Initial Prompt:** "Help me write my Q3 performance report."
+
+**Context Engineering Pipeline:**
+
+1.  **WRITE (Memory):**
+    *   The system must retrieve Sarah's user profile from a long-term memory store.
+    *   Profile details:
+        *   Name: Sarah
+        *   Role: Senior Product Manager
+        *   Tone: Professional but concise.
+    *   This information will be used to set the persona and tone for the final report.
+
+2.  **SELECT (RAG - Retrieval-Augmented Generation):**
+    *   The system must select relevant documents from a company knowledge base.
+    *   Documents to retrieve:
+        *   'Q3 Sales Performance' PDF.
+        *   'Project Phoenix Q3 Retro' page (Sarah's project notes).
+    *   This will provide the data and evidence for the report.
+
+3.  **COMPRESS:**
+    *   The system must summarize the retrieved documents to extract key, actionable bullet points.
+    *   Key information to extract:
+        *   "Sales exceeded target by 15%."
+        *   "Project Phoenix launched successfully, but user adoption is 10% below forecast."
+    *   This makes the context more token-efficient.
+
+4.  **ISOLATE:**
+    *   The system must provide the agent with tools to perform relevant actions, like getting feedback.
+    *   The tool library should be filtered to only include the necessary tool (`get_direct_reports_feedback()`) to avoid confusion and improve security/reliability.
+    *   The schema for this specific tool should be included in the context.
+
+**Final Output:**
+
+The system will assemble all the engineered context into a final, optimized prompt for the LLM.
+
+**Final Prompt Structure:**
+
+```
+// System Persona
+You are an expert assistant helping employees write high-quality performance reports.
+
+// User Info (from WRITE)
+- User: Sarah, Role: Senior Product Manager, Tone: Professional but concise
+
+// Retrieved & Compressed Data (from SELECT/COMPRESS)
+- Key Q3 Sales Data: Sales exceeded target by 15%.
+- Key Project Phoenix Data: Launched successfully, user adoption 10% below forecast.
+
+// Isolated Tool (from ISOLATE)
+- Tool: get_direct_reports_feedback()
+
+// Original User Query
+Help me write my Q3 performance report.
+```
+
+**Implementation Details:**
+
+*   The implementation should be modular, with each pillar of the pipeline implemented as a separate component.
+*   Mock data and services can be used for the memory store, knowledge base, and tool library.
+*   The final output should be the assembled prompt string. 

@@ -1,0 +1,28 @@
+{
+  "environment": "production",
+  "pdf": {
+    "pdf_directory": "/app/documents/pdfs",
+    "max_file_size_mb": 50,
+    "extraction_timeout": 60
+  },
+  "vector_search": {
+    "collection_name": "prod_documents",
+    "persist_directory": "/app/chroma_db",
+    "embedding_model": "all-MiniLM-L6-v2"
+  },
+  "api": {
+    "base_url": "https://api.production.com",
+    "timeout": 60,
+    "max_retries": 5
+  },
+  "cache": {
+    "enabled": true,
+    "cache_directory": "/app/cache",
+    "max_size_mb": 2000
+  },
+  "logging": {
+    "log_level": "INFO",
+    "log_file": "/app/logs/document_retriever.log"
+  },
+  "debug_mode": false
+}

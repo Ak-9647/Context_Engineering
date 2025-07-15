@@ -1,0 +1,61 @@
+
+{
+  "master": [
+    {
+      "id": "1",
+      "title": "Setup Project Structure",
+      "description": "Create the directory structure for the project to keep the code organized.",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": []
+    },
+    {
+      "id": "2",
+      "title": "Implement WRITE Pillar (Memory)",
+      "description": "Create a module to manage and retrieve user profile data for Sarah. This will include her role and preferred tone.",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": ["1"]
+    },
+    {
+      "id": "3",
+      "title": "Implement SELECT Pillar (RAG)",
+      "description": "Create a module to retrieve relevant documents ('Q3 Sales Performance' PDF and 'Project Phoenix Q3 Retro' notes) from a mock knowledge base.",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": ["1"]
+    },
+    {
+      "id": "4",
+      "title": "Implement COMPRESS Pillar",
+      "description": "Create a module to summarize the content of the retrieved documents into key bullet points.",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": ["3"]
+    },
+    {
+      "id": "5",
+      "title": "Implement ISOLATE Pillar",
+      "description": "Create a module to manage the agent's tools, with a function to isolate and provide only the 'get_direct_reports_feedback()' tool schema.",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": ["1"]
+    },
+    {
+      "id": "6",
+      "title": "Assemble Final Prompt",
+      "description": "Create a module that takes the outputs from the WRITE, COMPRESS, and ISOLATE pillars to build the final, context-rich prompt.",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": ["2", "4", "5"]
+    },
+    {
+      "id": "7",
+      "title": "Create Main Orchestration Script",
+      "description": "Develop the main script that orchestrates the pipeline, calling each pillar in sequence and printing the final generated prompt.",
+      "status": "pending",
+      "priority": "high",
+      "dependencies": ["6"]
+    }
+  ]
+} 
